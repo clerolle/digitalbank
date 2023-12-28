@@ -43,15 +43,15 @@ const AddUsers = () => {
     if (user.name !== "" && user.birthday !== "" && user.gender) {
       enqueueSnackbar("Creación de usuario exitosa", { variant: "success" });
       // router.push("/products");
-    } else if (user.name !== "" && user.birthday === "" && user.gender !== "") {
+    } else if ( user.birthday === "" ) {
       enqueueSnackbar("Todos los campos son obligatorios, ingresa fecha de nacimiento", {
         variant: "warning",
       });
-    } else if (user.name === "" && user.birthday !== "" && user.gender !== "") {
+    } else if ( user.name === "" ) {
       enqueueSnackbar("Todos los campos son obligatorios, ingresa nombre del usuario", {
         variant: "warning",
       });
-    } else if (user.name !== "" && user.birthday !== "" && user.gender === "") {
+    } else if ( user.gender === "") {
       enqueueSnackbar("Todos los campos son obligatorios, ingresa el genero de usuario", {
         variant: "warning",
       });
@@ -108,8 +108,8 @@ const AddUsers = () => {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value="M">Masculino</MenuItem>
-                <MenuItem value="F">Femenino</MenuItem>
+                <MenuItem value="Masculino">Masculino</MenuItem>
+                <MenuItem value="Femenino">Femenino</MenuItem>
               </Select>
             </FormControl>
           </div>

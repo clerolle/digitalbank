@@ -63,7 +63,7 @@ export default function EditUser(props) {
                     id="standard-basic"
                     variant="standard"
                     style={{ width: "300px", margin: "auto" }}
-                    value={new Date(props.user.birthday)}
+                    value={props.user.birthday}
                   />
                   <FormControl
                     variant="standard"

@@ -8,9 +8,9 @@ import { Grid, Link } from '@mui/material';
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div /* className={styles.description} */>
+      <div>
         <ResponsiveAppBar/>
-        <h3 style={{margin: "2em auto", textAlign: "center"}}>BIENVENIDO A DIGITAL BANK</h3>
+        <h3 style={{margin: "2em auto", textAlign: "center", color: "white "}}>BIENVENIDO A DIGITAL BANK</h3>
         <Grid container justifyContent={"center"} xs={10} style={{margin: " 2em auto"}}>
           <SwipeableTextMobileStepper/>
         </Grid>
