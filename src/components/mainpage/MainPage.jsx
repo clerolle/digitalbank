@@ -73,7 +73,7 @@ const MainPage = () => {
         <Grid item className={styles.container} md={6} xs={10}>
           <div className={styles.title}>
             <h3>BIENVENIDO A DIGITAL BANK</h3>
-            <p>SI DESEA AGREGAR UN NUEVO USUARIO HAGA CLICK</p>
+            {/* <p>SI DESEA AGREGAR UN NUEVO USUARIO HAGA CLICK</p> */}
           </div>
           <button className={styles.submit} type="submit" >
           <Link href="/usuario">Agregar usuario</Link>

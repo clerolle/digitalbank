@@ -40,18 +40,11 @@ const AddUsers = () => {
   const submit = (e) => {
     e.preventDefault();
     if (user.name !== "" && user.password !== "") {
-      let isValidate = ApiLogin(user.name, user.password);
-      console.log(isValidate);
-      if (isValidate) {
-        enqueueSnackbar("Inicio de sesión exitosa", { variant: "success" });
+        enqueueSnackbar("Creación de usuario exitosa", { variant: "success" });
         router.push("/products");
-      } else {
-        enqueueSnackbar("usuario o contraseña erroneos", {
-          variant: "warning",
-        });
-      }
+      
     } else if (user.name !== "" && user.password === "") {
-      enqueueSnackbar("Todos los campos son obligatorios, contraseña erronea", {
+      enqueueSnackbar("Todos los campos son obligatorios, nombre erroneo", {
         variant: "warning",
       });
     } else if (user.name === "" && user.password !== "") {
@@ -60,7 +53,7 @@ const AddUsers = () => {
       });
     } else {
       enqueueSnackbar(
-        "Todos los campos son obligatorios, usuario y contraseña erroneos",
+        "Todos los campos son obligatorios, usuario, fecha ",
         { variant: "warning" }
       );
     }
@@ -74,11 +67,11 @@ const AddUsers = () => {
             <div className={styles.text}>USUARIO</div>
           </div>
           <div className={styles.inputs}>
-            <TextField type="text" id="standard-basic"  variant="standard" style={{width: "300px", margin: 'auto'}}/>
+            <TextField type="text" id="standard-basic" placeholder="Nombre"  variant="standard" style={{width: "300px", margin: 'auto'}}/>
             <TextField type="date" id="standard-basic"  variant="standard" style={{width: "300px", margin: 'auto'}}/>
             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} style={{width: "300px", margin: 'auto'}} >
               <InputLabel id="demo-simple-select-standard-label">
-                Genero
+                Género
               </InputLabel>
               <Select
                 labelId="demo-simple-select-standard-label"
