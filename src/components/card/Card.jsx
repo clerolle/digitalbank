@@ -69,10 +69,10 @@ export default function ReviewCard(props) {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {props.fruit?.family}
+         Genero: {props.user.gender}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      {/* <CardActions disableSpacing>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -89,7 +89,7 @@ export default function ReviewCard(props) {
            {props.user.gender}
           </Typography>
         </CardContent>
-      </Collapse>
+      </Collapse> */}
     </Card>
     
   );
