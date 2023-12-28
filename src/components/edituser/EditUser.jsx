@@ -9,6 +9,8 @@ import styles from "./EditUser.module.css";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
 import { ApiEdit } from "../api/ApiEdit";
+import { ApiGet } from "../api/ApiGet";
+import { ApiDelete } from "../api/ApiDelete";
 
 const style = {
   position: "absolute",
@@ -52,6 +54,7 @@ export default function EditUser(props) {
       ApiEdit(user);
       enqueueSnackbar("Edición usuario exitosa", { variant: "success" });
       setOpen(false);
+      router.push("/");
     } else if ( user.birthday === "" ) {
       enqueueSnackbar("Todos los campos son obligatorios, ingresa fecha de nacimiento", {
         variant: "warning",
@@ -72,13 +75,9 @@ export default function EditUser(props) {
   };
 
   const handleDelete = () => {
-    useEffect(()=>{
-      fetch("https://")
-            .then((res) => res.json())
-            .then((data) => {
-              setUser(data);
-            });
-    },[])
+    ApiDelete(user.id);
+    setOpen(false);
+    router.push("/usuario");
   }
 
   return (
