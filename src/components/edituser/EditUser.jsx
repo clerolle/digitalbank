@@ -26,9 +26,17 @@ export default function EditUser(props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [gender, setGender] = useState(props.user.gender);
+  const [user, setUser] = useState({
+    name: props.user.name,
+    birthday: props.user.birthday,
+    gender: props.user.gender,
+  });
   
-  const handleChange = (event) => {
-    setGender(event.target.value);
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -54,16 +62,20 @@ export default function EditUser(props) {
                   <TextField
                     type="text"
                     id="standard-basic"
+                    name="name"
                     variant="standard"
                     style={{ width: "300px", margin: "auto" }}
                     value={props.user.name}
+                    onChange={handleChange}
                   />
                   <TextField
                     type="date"
                     id="standard-basic"
+                    name="birthday"
                     variant="standard"
                     style={{ width: "300px", margin: "auto" }}
-                    value={props.user.birthday}
+                    value={user.birthday}
+                    onChange={handleChange}
                   />
                   <FormControl
                     variant="standard"
@@ -76,9 +88,10 @@ export default function EditUser(props) {
                     <Select
                       labelId="demo-simple-select-standard-label"
                       id="demo-simple-select-standard"
-                      value={gender}
+                      name="gender"
+                      label="Gender"
+                      value={user.gender}
                       onChange={handleChange}
-                      label="Age"
                     >
                       <MenuItem value="">
                         <em>None</em>

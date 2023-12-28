@@ -22,15 +22,6 @@ const AddUsers = () => {
     gender: "",
   });
 
-  // Snackbar Instance
-  // const { enqueueSnackbar } = useSnackbar()
-
-  // const [gender, setGender] = React.useState("");
-
-  // const handleChange = (event) => {
-  //   setGender(event.target.value);
-  // };
-
   const handleChange = (e) => {
     setUser({
       ...user,
