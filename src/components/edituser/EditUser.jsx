@@ -19,11 +19,13 @@ const style = {
   p: 4,
 };
 
-export default function EditUser() {
+export default function EditUser(props) {
+
+  // local state
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState(props.user.gender);
   
   const handleChange = (event) => {
     setGender(event.target.value);
@@ -54,12 +56,14 @@ export default function EditUser() {
                     id="standard-basic"
                     variant="standard"
                     style={{ width: "300px", margin: "auto" }}
+                    value={props.user.name}
                   />
                   <TextField
                     type="date"
                     id="standard-basic"
                     variant="standard"
                     style={{ width: "300px", margin: "auto" }}
+                    value={new Date(props.user.birthday)}
                   />
                   <FormControl
                     variant="standard"
@@ -79,8 +83,8 @@ export default function EditUser() {
                       <MenuItem value="">
                         <em>None</em>
                       </MenuItem>
-                      <MenuItem value="M">Masculino</MenuItem>
-                      <MenuItem value="F">Femenino</MenuItem>
+                      <MenuItem value="Masculino">Masculino</MenuItem>
+                      <MenuItem value="Femenino">Femenino</MenuItem>
                     </Select>
                   </FormControl>
                 </div>

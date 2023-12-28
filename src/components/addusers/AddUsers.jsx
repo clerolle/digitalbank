@@ -9,7 +9,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
 
 const AddUsers = () => {
   // Router Instance
@@ -18,44 +18,47 @@ const AddUsers = () => {
   // Local State
   const [user, setUser] = useState({
     name: "",
-    password: "",
+    birthday: "",
+    gender: "",
   });
 
   // Snackbar Instance
   // const { enqueueSnackbar } = useSnackbar()
 
-  const [gender, setGender] = React.useState("");
-  
-  const handleChange = (event) => {
-    setGender(event.target.value);
-  };
+  // const [gender, setGender] = React.useState("");
 
-  //   const handleChange = (e) => {
-  //     setUser({
-  //       ...user,
-  //       [e.target.name]: e.target.value,
-  //     });
-  //   };
+  // const handleChange = (event) => {
+  //   setGender(event.target.value);
+  // };
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const submit = (e) => {
     e.preventDefault();
-    if (user.name !== "" && user.password !== "") {
-        enqueueSnackbar("Creación de usuario exitosa", { variant: "success" });
-        router.push("/products");
-      
-    } else if (user.name !== "" && user.password === "") {
-      enqueueSnackbar("Todos los campos son obligatorios, nombre erroneo", {
+    if (user.name !== "" && user.birthday !== "" && user.gender) {
+      enqueueSnackbar("Creación de usuario exitosa", { variant: "success" });
+      // router.push("/products");
+    } else if (user.name !== "" && user.birthday === "" && user.gender !== "") {
+      enqueueSnackbar("Todos los campos son obligatorios, ingresa fecha de nacimiento", {
         variant: "warning",
       });
-    } else if (user.name === "" && user.password !== "") {
-      enqueueSnackbar("Todos los campos son obligatorios,  usuario erroneo", {
+    } else if (user.name === "" && user.birthday !== "" && user.gender !== "") {
+      enqueueSnackbar("Todos los campos son obligatorios, ingresa nombre del usuario", {
+        variant: "warning",
+      });
+    } else if (user.name !== "" && user.birthday !== "" && user.gender === "") {
+      enqueueSnackbar("Todos los campos son obligatorios, ingresa el genero de usuario", {
         variant: "warning",
       });
     } else {
-      enqueueSnackbar(
-        "Todos los campos son obligatorios, usuario, fecha ",
-        { variant: "warning" }
-      );
+      enqueueSnackbar("Todos los campos son obligatorios, usuario fecha y genero ", {
+        variant: "warning",
+      });
     }
   };
   return (
@@ -67,16 +70,38 @@ const AddUsers = () => {
             <div className={styles.text}>USUARIO</div>
           </div>
           <div className={styles.inputs}>
-            <TextField type="text" id="standard-basic" placeholder="Nombre"  variant="standard" style={{width: "300px", margin: 'auto'}}/>
-            <TextField type="date" id="standard-basic"  variant="standard" style={{width: "300px", margin: 'auto'}}/>
-            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} style={{width: "300px", margin: 'auto'}} >
+            <TextField
+              type="text"
+              id="standard-basic"
+              placeholder="Nombre"
+              variant="standard"
+              name="name"
+              style={{ width: "300px", margin: "auto" }}
+              value={user.name}
+              onChange={handleChange}
+            />
+            <TextField
+              type="date"
+              id="standard-basic"
+              variant="standard"
+              style={{ width: "300px", margin: "auto" }}
+              name="birthday"
+              value={user.birthday}
+              onChange={handleChange}
+            />
+            <FormControl
+              variant="standard"
+              sx={{ m: 1, minWidth: 120 }}
+              style={{ width: "300px", margin: "auto" }}
+            >
               <InputLabel id="demo-simple-select-standard-label">
                 Género
               </InputLabel>
               <Select
                 labelId="demo-simple-select-standard-label"
                 id="demo-simple-select-standard"
-                value={gender}
+                value={user.gender}
+                name="gender"
                 onChange={handleChange}
                 label="Age"
               >

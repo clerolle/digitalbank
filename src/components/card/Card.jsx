@@ -28,6 +28,8 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function ReviewCard(props) {
+
+  // local state
   const [expanded, setExpanded] = useState(false);
   const [date, setDate] = useState(new Date());
   
@@ -55,7 +57,7 @@ export default function ReviewCard(props) {
         }
         action={
           <IconButton aria-label="settings">
-            <EditUser/>
+            <EditUser user={props.user}/>
           </IconButton>
         }
         title={props.user?.name}
