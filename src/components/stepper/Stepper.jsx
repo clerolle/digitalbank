@@ -26,9 +26,9 @@ function SwipeableTextMobileStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
 
-      // Redux State Extraction
-      const info = useSelector(state => state.info);
-      // console.log(info);
+  // Redux State Extraction
+  const info = useSelector(state => state.info);
+  // console.log(info);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);

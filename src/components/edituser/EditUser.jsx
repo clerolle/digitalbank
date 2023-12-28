@@ -39,19 +39,53 @@ export default function EditUser(props) {
     });
   };
 
+  const submit = (e) => {
+    e.preventDefault();
+    if (user.name !== "" && user.birthday !== "" && user.gender) {
+      enqueueSnackbar("Edición usuario exitosa", { variant: "success" });
+      router.push("/consultausuario");
+    } else if ( user.birthday === "" ) {
+      enqueueSnackbar("Todos los campos son obligatorios, ingresa fecha de nacimiento", {
+        variant: "warning",
+      });
+    } else if ( user.name === "" ) {
+      enqueueSnackbar("Todos los campos son obligatorios, ingresa nombre del usuario", {
+        variant: "warning",
+      });
+    } else if ( user.gender === "") {
+      enqueueSnackbar("Todos los campos son obligatorios, ingresa el genero de usuario", {
+        variant: "warning",
+      });
+    } else {
+      enqueueSnackbar("Todos los campos son obligatorios, usuario fecha y genero ", {
+        variant: "warning",
+      });
+    }
+  };
+
+  const handleDelete = () => {
+    useEffect(()=>{
+      fetch("https://")
+            .then((res) => res.json())
+            .then((data) => {
+              setUser(data);
+            });
+    },[])
+  }
+
   return (
     <div>
       <Button onClick={handleOpen}>
         <MoreVertIcon />
       </Button>
       <Modal
-        style={{border: "none", margin: "10em auto", width: "300px"}}
+        style={{border: "none", margin: "5em auto", width: "300px"}}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-          <form /* onSubmit={submit} */>
+          <form onSubmit={submit}>
             <Grid container>
               <Grid item className={styles.container} >
                 <div className={styles.header}>
@@ -102,6 +136,9 @@ export default function EditUser(props) {
                 </div>
                 <button className={styles.submit} type="submit">
                   EDITAR
+                </button>
+                <button className={styles.submit} onClick={handleDelete}>
+                  ELIMINAR
                 </button>
               </Grid>
             </Grid>

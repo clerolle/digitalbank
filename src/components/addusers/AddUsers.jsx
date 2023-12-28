@@ -33,7 +33,7 @@ const AddUsers = () => {
     e.preventDefault();
     if (user.name !== "" && user.birthday !== "" && user.gender) {
       enqueueSnackbar("Creación de usuario exitosa", { variant: "success" });
-      // router.push("/products");
+      router.push("/consultausuario");
     } else if ( user.birthday === "" ) {
       enqueueSnackbar("Todos los campos son obligatorios, ingresa fecha de nacimiento", {
         variant: "warning",
