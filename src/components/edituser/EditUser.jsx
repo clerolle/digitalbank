@@ -34,7 +34,7 @@ export default function EditUser(props) {
   const [user, setUser] = useState({
     name: props.user.name,
     birthday: props.user.birthday,
-    gender: props.user.gender,
+    gender: props.user.gender === "Femenino" ? "F": "M",
   });
   
   const handleChange = (e) => {
@@ -135,8 +135,8 @@ export default function EditUser(props) {
                       <MenuItem value="">
                         <em>None</em>
                       </MenuItem>
-                      <MenuItem value="Masculino">Masculino</MenuItem>
-                      <MenuItem value="Femenino">Femenino</MenuItem>
+                      <MenuItem value="M">Masculino</MenuItem>
+                      <MenuItem value="F">Femenino</MenuItem>
                     </Select>
                   </FormControl>
                 </div>
