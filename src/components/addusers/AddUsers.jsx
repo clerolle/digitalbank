@@ -12,6 +12,7 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 
 const AddUsers = () => {
+
   // Router Instance
   const router = useRouter();
 
@@ -52,6 +53,7 @@ const AddUsers = () => {
       });
     }
   };
+
   return (
     <form onSubmit={submit}>
       <SnackbarProvider />

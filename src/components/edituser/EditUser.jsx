@@ -6,6 +6,8 @@ import Modal from "@mui/material/Modal";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import styles from "./EditUser.module.css";
+import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import { useRouter } from "next/navigation";
 
 const style = {
   position: "absolute",
@@ -20,6 +22,9 @@ const style = {
 };
 
 export default function EditUser(props) {
+
+  // Router Instance
+  const router = useRouter();
 
   // local state
   const [open, setOpen] = useState(false);
@@ -43,7 +48,7 @@ export default function EditUser(props) {
     e.preventDefault();
     if (user.name !== "" && user.birthday !== "" && user.gender) {
       enqueueSnackbar("Edición usuario exitosa", { variant: "success" });
-      router.push("/consultausuario");
+      setOpen(false);
     } else if ( user.birthday === "" ) {
       enqueueSnackbar("Todos los campos son obligatorios, ingresa fecha de nacimiento", {
         variant: "warning",
@@ -75,6 +80,7 @@ export default function EditUser(props) {
 
   return (
     <div>
+      <SnackbarProvider />
       <Button onClick={handleOpen}>
         <MoreVertIcon />
       </Button>
@@ -134,12 +140,14 @@ export default function EditUser(props) {
                     </Select>
                   </FormControl>
                 </div>
-                <button className={styles.submit} type="submit">
-                  EDITAR
-                </button>
-                <button className={styles.submit} onClick={handleDelete}>
-                  ELIMINAR
-                </button>
+                <Grid display={"flex"} >
+                  <button className={styles.submit} type="submit">
+                    EDITAR
+                  </button>
+                  <button className={styles.submit} onClick={handleDelete}>
+                    ELIMINAR
+                  </button>
+                </Grid>
               </Grid>
             </Grid>
           </form>

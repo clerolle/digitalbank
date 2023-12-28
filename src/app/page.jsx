@@ -32,7 +32,6 @@ export default function Home() {
         <button className={styles.submit} type="submit" >
           <Link href="/usuario">Agregar usuario</Link>
         </button>
-        {/* <MainPage/> */}
       </div>
     </main>
   )
