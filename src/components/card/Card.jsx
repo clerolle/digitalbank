@@ -11,9 +11,6 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { blue, green, orange, red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import EditIcon from '@mui/icons-material/Edit';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import EditUser from '../edituser/EditUser';
 import { useSelector } from 'react-redux';
 
@@ -33,10 +30,6 @@ export default function ReviewCard(props) {
   // local state
   const [expanded, setExpanded] = useState(false);
   const [date, setDate] = useState(new Date());
-
-    // Redux State Extraction
-    const info = useSelector(state => state.info);
-    // console.log(info);
   
   const day =
       date.getDate() > 9

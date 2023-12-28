@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { getInfo } from '@/redux/features/infoSlice';
 
 export default function Home() {
+  
   // Redux
   const dispatch = useDispatch();
   
@@ -19,6 +20,7 @@ export default function Home() {
             dispatch(getInfo(data.results));
           });
   },[])
+  
   return (
     <main className={styles.main}>
       <div>

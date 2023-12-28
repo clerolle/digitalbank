@@ -51,7 +51,6 @@ export default function EditUser(props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        {/* <Box sx={style}> */}
           <form /* onSubmit={submit} */>
             <Grid container>
               <Grid item className={styles.container} >
@@ -65,7 +64,7 @@ export default function EditUser(props) {
                     name="name"
                     variant="standard"
                     style={{ width: "300px", margin: "auto" }}
-                    value={props.user.name}
+                    value={user.name}
                     onChange={handleChange}
                   />
                   <TextField
@@ -107,7 +106,6 @@ export default function EditUser(props) {
               </Grid>
             </Grid>
           </form>
-        {/* </Box> */}
       </Modal>
     </div>
   );
