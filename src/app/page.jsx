@@ -1,25 +1,10 @@
 "use client";
-import Image from 'next/image';
 import styles from './page.module.css';
 import ResponsiveAppBar from '@/components/appbar/AppBar';
 import SwipeableTextMobileStepper from '@/components/stepper/Stepper';
 import { Grid, Link } from '@mui/material';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getInfo } from '@/redux/features/infoSlice';
 
 export default function Home() {
-  
-  // Redux
-  const dispatch = useDispatch();
-  
-  useEffect(()=>{
-    fetch("https://pokeapi.co/api/v2/pokemon/")
-          .then((res) => res.json())
-          .then((data) => {
-            dispatch(getInfo(data.results));
-          });
-  },[])
   
   return (
     <main className={styles.main}>

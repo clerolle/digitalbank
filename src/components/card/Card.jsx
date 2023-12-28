@@ -61,15 +61,15 @@ export default function ReviewCard(props) {
         title={props.user?.name}
         subheader={props.user?.birthday}
       />
-      <CardMedia
+      {/* <CardMedia
         component="img"
         height="90"
         image={props.user?.img}
         alt="fruta"
-      />
+      /> */}
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-         Genero: {props.user.gender}
+         Genero: {props.user?.gender === "M" ? "Masculino": "Femenino"}
         </Typography>
       </CardContent>
       {/* <CardActions disableSpacing>

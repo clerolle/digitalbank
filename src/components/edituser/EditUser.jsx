@@ -8,6 +8,7 @@ import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui
 import styles from "./EditUser.module.css";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
+import { ApiEdit } from "../api/ApiEdit";
 
 const style = {
   position: "absolute",
@@ -34,7 +35,8 @@ export default function EditUser(props) {
   const [user, setUser] = useState({
     name: props.user.name,
     birthday: props.user.birthday,
-    gender: props.user.gender === "Femenino" ? "F": "M",
+    gender: props.user.gender,
+    id: props.user.id
   });
   
   const handleChange = (e) => {
@@ -47,6 +49,7 @@ export default function EditUser(props) {
   const submit = (e) => {
     e.preventDefault();
     if (user.name !== "" && user.birthday !== "" && user.gender) {
+      ApiEdit(user);
       enqueueSnackbar("Edición usuario exitosa", { variant: "success" });
       setOpen(false);
     } else if ( user.birthday === "" ) {

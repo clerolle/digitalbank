@@ -1,5 +1,5 @@
 "use client"
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
@@ -11,7 +11,8 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { usersAvailables } from '../../../data';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getInfo } from '@/redux/features/infoSlice';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -26,10 +27,6 @@ function SwipeableTextMobileStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
 
-  // Redux State Extraction
-  const info = useSelector(state => state.info);
-  // console.log(info);
-
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -40,7 +37,7 @@ function SwipeableTextMobileStepper() {
 
   const handleStepChange = (step) => {
     setActiveStep(step);
-  };
+  };  
 
   return (
     <Box sx={{ maxWidth: 400, flexGrow: 1 }}>

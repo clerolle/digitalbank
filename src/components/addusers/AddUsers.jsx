@@ -10,6 +10,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
+import { ApiCreate } from "../api/ApiCreate";
 
 const AddUsers = () => {
 
@@ -33,6 +34,8 @@ const AddUsers = () => {
   const submit = (e) => {
     e.preventDefault();
     if (user.name !== "" && user.birthday !== "" && user.gender) {
+      let isValidate = ApiCreate(user);
+      console.log(isValidate);
       enqueueSnackbar("Creación de usuario exitosa", { variant: "success" });
       router.push("/consultausuario");
     } else if ( user.birthday === "" ) {
